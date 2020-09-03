@@ -6,10 +6,29 @@ import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity} from 'reac
 export default function App(){
 
   const[counter, setCounter] = useState(0);
+  const [userName, setUsername] = useState("");
+  const [password, setPass] = useState("")
 
   return (
     <View style={styles.container}>
 
+      <TextInput 
+        placeholder = "Username"
+        onChangeText = {(text) => setUsername(text)}
+        value = {userName}
+        />
+      <TextInput placeholder = "Password"
+        onChangeText = {(text) => setPass(text)}
+        value = {password}
+        />
+      <Button   style = {StyleSheet.loginButton}
+                title="Login"
+                onPress = { () => {
+                    //alert("Done")
+                    setUsername("")
+                    setPass("")
+                }}
+                />
       <Button title = "Get" onPress = { () => {
         let min = 1;
         let max = 100;
@@ -20,7 +39,6 @@ export default function App(){
 
       <Text>RNG {counter}</Text>
 
-     
       <StatusBar style="auto" />
     </View>
   )
@@ -32,5 +50,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  loginButton: {
+    margin: 16,
   }
 });
